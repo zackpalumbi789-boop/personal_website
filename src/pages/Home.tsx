@@ -5,18 +5,19 @@ import ChatSection from '@/components/home/ChatSection';
 
 const Home = () => {
   return (
-    <div className="flex flex-col min-h-screen">
-      <main className="flex-grow">
+    <div className="flex h-screen overflow-hidden">
+      {/* 左侧：个人信息区 */}
+      <div className="w-full md:w-1/2 overflow-y-auto bg-gradient-to-b from-blue-700 via-blue-800 to-background dark:from-slate-900 dark:via-blue-950 dark:to-background">
         <Hero />
-        <InfoSection />
-        <ChatSection />
-      </main>
-      
-      <footer className="py-8 border-t bg-slate-50 dark:bg-slate-900 text-center text-muted-foreground text-sm">
-        <div className="container">
-          <p>© 2026 陆祁的个人主页 | 开启AI新篇章</p>
+        <div className="pb-8">
+          <InfoSection />
         </div>
-      </footer>
+      </div>
+
+      {/* 右侧：聊天区 */}
+      <div className="hidden md:flex md:w-1/2 bg-slate-50 dark:bg-slate-900/50">
+        <ChatSection />
+      </div>
     </div>
   );
 };

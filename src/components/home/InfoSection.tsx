@@ -31,20 +31,20 @@ const InfoSection = () => {
   ];
 
   return (
-    <section className="py-24 container bg-background">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 animate-fade-in delay-300">
+    <section className="py-8 container">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 animate-fade-in delay-300">
         {infoItems.map((item, index) => (
           <Card key={index} className={`border-none shadow-md overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 ${item.color}`}>
-            <CardHeader className="flex flex-row items-center gap-4 space-y-0 pb-2">
+            <CardHeader className="flex flex-row items-center gap-3 space-y-0 pb-2">
               <div className="p-2 rounded-lg bg-white/80 dark:bg-slate-800 shadow-sm">
                 {item.icon}
               </div>
-              <CardTitle className="text-sm font-semibold text-muted-foreground uppercase tracking-wider">
+              <CardTitle className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">
                 {item.title}
               </CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-lg font-bold text-foreground leading-snug">
+              <p className="text-base font-bold text-foreground leading-snug">
                 {item.content}
               </p>
             </CardContent>

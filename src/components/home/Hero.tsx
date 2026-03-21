@@ -38,7 +38,7 @@ const Hero = () => {
   };
 
   return (
-    <section className="relative w-full py-20 overflow-hidden bg-gradient-to-b from-blue-700 via-blue-800 to-background dark:from-slate-900 dark:via-blue-950 dark:to-background">
+    <section className="relative w-full py-12 overflow-hidden">
       {/* 粒子装饰动效占位 */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-24 -left-24 w-96 h-96 bg-primary/20 rounded-full blur-[100px] animate-pulse" />
@@ -49,9 +49,9 @@ const Hero = () => {
              style={{backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0)', backgroundSize: '40px 40px'}} />
       </div>
 
-      <div className="container relative z-10 flex flex-col items-center text-center">
-        <div className="relative mb-8 p-1 rounded-full bg-gradient-to-tr from-primary to-primary-glow shadow-lg shadow-primary/20 animate-fade-in">
-          <Avatar className="w-32 h-32 md:w-40 md:h-40 border-4 border-white/10">
+      <div className="container relative z-10 flex flex-col items-center text-center px-6">
+        <div className="relative mb-6 p-1 rounded-full bg-gradient-to-tr from-primary to-primary-glow shadow-lg shadow-primary/20 animate-fade-in">
+          <Avatar className="w-28 h-28 md:w-32 md:h-32 border-4 border-white/10">
             <AvatarImage src={avatarUrl} alt="陆祁" className="object-cover" />
             <AvatarFallback className="bg-muted text-2xl font-bold">陆祁</AvatarFallback>
           </Avatar>
@@ -60,23 +60,23 @@ const Hero = () => {
           <Button
             size="icon"
             variant="secondary"
-            className="absolute -bottom-2 -right-2 rounded-full shadow-lg hover:scale-110 transition-transform"
+            className="absolute -bottom-2 -right-2 rounded-full shadow-lg hover:scale-110 transition-transform w-8 h-8"
             onClick={handleGenerateAvatar}
             disabled={isGenerating}
           >
             {isGenerating ? (
-              <Loader2 className="w-4 h-4 animate-spin" />
+              <Loader2 className="w-3 h-3 animate-spin" />
             ) : (
-              <Sparkles className="w-4 h-4" />
+              <Sparkles className="w-3 h-3" />
             )}
           </Button>
         </div>
 
         {/* 头像选项 */}
         {showOptions && generatedOptions.length > 0 && (
-          <div className="mb-6 p-4 bg-white/90 dark:bg-slate-800/90 rounded-2xl shadow-xl backdrop-blur-sm animate-fade-in">
-            <p className="text-sm text-foreground mb-3 font-medium">选择一张头像：</p>
-            <div className="flex gap-3 justify-center">
+          <div className="mb-4 p-3 bg-white/90 dark:bg-slate-800/90 rounded-2xl shadow-xl backdrop-blur-sm animate-fade-in">
+            <p className="text-xs text-foreground mb-2 font-medium">选择一张头像：</p>
+            <div className="flex gap-2 justify-center">
               {generatedOptions.map((url, idx) => (
                 <button
                   key={idx}
@@ -84,7 +84,7 @@ const Hero = () => {
                   className="relative group"
                   type="button"
                 >
-                  <Avatar className="w-20 h-20 border-2 border-primary/50 hover:border-primary transition-all hover:scale-110 cursor-pointer">
+                  <Avatar className="w-16 h-16 border-2 border-primary/50 hover:border-primary transition-all hover:scale-110 cursor-pointer">
                     <AvatarImage src={url} alt={`选项 ${idx + 1}`} className="object-cover" />
                   </Avatar>
                   <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/20 rounded-full transition-colors" />
@@ -94,11 +94,11 @@ const Hero = () => {
           </div>
         )}
 
-        <h1 className="text-4xl md:text-6xl font-extrabold text-white mb-4 tracking-tight animate-fade-in">
+        <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-3 tracking-tight animate-fade-in">
           陆祁
         </h1>
         
-        <p className="max-w-2xl text-lg md:text-xl text-blue-100/90 font-medium leading-relaxed animate-fade-in delay-150">
+        <p className="max-w-xl text-base md:text-lg text-blue-100/90 font-medium leading-relaxed animate-fade-in delay-150">
           「我是一名互联网从业近17年的老兵，现在打算拥抱AI」
         </p>
       </div>
