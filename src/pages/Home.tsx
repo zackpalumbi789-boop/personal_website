@@ -1,21 +1,20 @@
-import React from 'react';
 import Hero from '@/components/home/Hero';
 import InfoSection from '@/components/home/InfoSection';
 import ChatSection from '@/components/home/ChatSection';
 
 const Home = () => {
   return (
-    <div className="flex h-screen overflow-hidden">
+    <div className="flex min-h-screen flex-col overflow-x-hidden bg-slate-100 md:h-screen md:flex-row md:overflow-hidden dark:bg-slate-950">
       {/* 左侧：个人信息区 */}
-      <div className="w-full md:w-1/2 overflow-y-auto bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 dark:from-slate-900 dark:via-blue-950 dark:to-slate-800">
+      <div className="relative w-full border-b border-slate-700/60 bg-gradient-to-b from-slate-800 via-slate-800 to-slate-900 md:w-[42%] md:overflow-y-auto md:border-b-0 md:border-r md:border-slate-800 md:no-scrollbar">
         <Hero />
-        <div className="pb-8">
+        <div className="pb-5 md:pb-6">
           <InfoSection />
         </div>
       </div>
 
       {/* 右侧：聊天区 */}
-      <div className="hidden md:flex md:w-1/2 bg-gradient-to-bl from-blue-50 via-slate-50 to-blue-50/50 dark:bg-gradient-to-bl dark:from-slate-900/80 dark:via-slate-900 dark:to-blue-950/30">
+      <div className="flex w-full bg-slate-50 md:w-[58%] dark:bg-slate-950/80">
         <ChatSection />
       </div>
     </div>

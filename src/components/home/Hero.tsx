@@ -1,34 +1,42 @@
-import React from 'react';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 
 const Hero = () => {
   return (
-    <section className="relative w-full py-12 overflow-hidden">
-      {/* 粒子装饰动效占位 */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute -top-24 -left-24 w-96 h-96 bg-primary/20 rounded-full blur-[100px] animate-pulse" />
-        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-blue-400/10 rounded-full blur-[100px] animate-pulse delay-1000" />
-        
-        {/* 简单的科技感线条或光点 */}
-        <div className="absolute inset-0 opacity-20" 
-             style={{backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.1) 1px, transparent 0)', backgroundSize: '40px 40px'}} />
+    <section className="relative w-full overflow-hidden border-b border-white/15 py-10 md:py-12">
+      <div className="absolute inset-0 pointer-events-none opacity-30">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage:
+              'linear-gradient(to right, rgba(255,255,255,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.08) 1px, transparent 1px)',
+            backgroundSize: '28px 28px',
+          }}
+        />
       </div>
 
-      <div className="container relative z-10 flex flex-col items-center text-center px-6">
-        <div className="relative mb-6 p-1 rounded-full bg-gradient-to-tr from-primary to-primary-glow shadow-lg shadow-primary/20 animate-fade-in">
-          <Avatar className="w-28 h-28 md:w-32 md:h-32 border-4 border-white/10">
-            <AvatarImage src="https://miaoda-image.bj.bcebos.com/unsplash_round1/01/unsplash_333637_ieDkvpIY_1A.jpg" alt="陆祁" className="object-cover" />
-            <AvatarFallback className="bg-muted text-2xl font-bold">陆祁</AvatarFallback>
-          </Avatar>
-        </div>
+      <div className="container relative z-10 px-6">
+        <div className="mx-auto flex max-w-xl flex-col items-start text-left">
+          <div className="mb-5 inline-flex rounded-full border border-white/20 bg-white/5 p-1">
+            <Avatar className="h-24 w-24 border-2 border-white/25 md:h-28 md:w-28">
+              <AvatarImage src="/avatar-professional-woman.svg" alt="陆祁" className="object-cover" />
+              <AvatarFallback className="bg-muted text-2xl font-bold">陆祁</AvatarFallback>
+            </Avatar>
+          </div>
 
-        <h1 className="text-3xl md:text-5xl font-extrabold text-white mb-3 tracking-tight animate-fade-in">
-          陆祁
-        </h1>
-        
-        <p className="max-w-xl text-base md:text-lg text-blue-100/90 font-medium leading-relaxed animate-fade-in delay-150">
-          「我是一名互联网从业近17年的老兵，现在打算拥抱AI」
-        </p>
+          <p className="mb-4 rounded-full border border-blue-200 bg-blue-50 px-4 py-1 text-xs font-semibold tracking-[0.16em] text-blue-700 dark:border-blue-900/60 dark:bg-blue-950/40 dark:text-blue-200">
+            PRODUCT x AI
+          </p>
+          <h1 className="mb-2 text-4xl font-extrabold tracking-tight text-white md:text-5xl">陆祁</h1>
+          <p className="max-w-lg text-base font-normal leading-7 text-blue-100/85 md:text-base md:leading-7">
+            一个正在学习用 AI 做产品的互联网老兵。
+          </p>
+          <a
+            href="#chat-entry"
+            className="mt-6 inline-flex w-full max-w-xs items-center justify-center rounded-full border border-blue-500 bg-blue-500 px-6 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-blue-600 md:w-auto"
+          >
+            进入数字对话
+          </a>
+        </div>
       </div>
     </section>
   );

@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
@@ -14,7 +14,7 @@ interface Message {
 
 const ChatSection = () => {
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'assistant', content: '你好！我是陆祁的数字分身。你可以问我关于我的职业背景、最近在忙什么，或者我的兴趣爱好。' }
+    { role: 'assistant', content: '你好！我是陆祁的数字分身。你可以跟我聊聊最近在忙点啥。' }
   ]);
   const [input, setInput] = useState('');
   const [isStreaming, setIsStreaming] = useState(false);
@@ -113,33 +113,38 @@ const ChatSection = () => {
   }, []);
 
   return (
-    <section className="h-full flex flex-col p-6">
-      <div className="flex items-center gap-3 mb-6">
-        <div className="p-2 rounded-full bg-blue-100 dark:bg-blue-900/30">
-          <Sparkles className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+    <section id="chat-entry" className="flex h-full min-h-[34rem] w-full flex-col p-4 md:min-h-0 md:p-8">
+      <div className="mb-6 border-b border-slate-200 pb-4 md:mb-7 md:pb-5 dark:border-slate-800">
+        <div className="flex items-start gap-3">
+          <div className="mt-0.5 rounded-md border border-blue-200 bg-blue-50 p-2 dark:border-blue-900/60 dark:bg-blue-950/40">
+            <Sparkles className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+          </div>
+          <div>
+            <h2 className="text-xl font-bold tracking-tight text-slate-900 md:text-2xl dark:text-slate-100">数字分身对话</h2>
+            <p className="mt-1 text-sm font-normal text-slate-600 dark:text-slate-300">可以聊聊我最近在忙点啥，直接点下面按钮或输入问题。</p>
+          </div>
         </div>
-        <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100">和我的数字分身聊聊</h2>
       </div>
 
-      <Card className="flex-1 shadow-xl border border-blue-100 dark:border-blue-900/30 bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm overflow-hidden flex flex-col">
-        <CardHeader className="border-b border-blue-100 dark:border-blue-900/30 bg-blue-50/50 dark:bg-blue-950/30 py-3">
-          <CardTitle className="text-sm font-medium flex items-center gap-2">
+      <Card className="flex flex-1 flex-col overflow-hidden border border-blue-300/80 bg-white shadow-md dark:border-blue-900/40 dark:bg-slate-900">
+        <CardHeader className="border-b border-slate-200 bg-slate-50 py-3 dark:border-slate-800 dark:bg-slate-900/80">
+          <CardTitle className="text-sm font-semibold flex items-center gap-2 text-slate-900 dark:text-slate-100">
             <Bot className="w-4 h-4 text-blue-600 dark:text-blue-400" />
             陆祁的数字分身
-            <span className="flex h-2 w-2 rounded-full bg-green-500 animate-pulse ml-auto" />
+            <span className="ml-auto flex h-2 w-2 rounded-full bg-blue-500 animate-pulse" />
           </CardTitle>
         </CardHeader>
 
         <CardContent className="flex-1 p-0 overflow-hidden flex flex-col">
-          <ScrollArea className="flex-1 p-4" ref={scrollAreaRef}>
+          <ScrollArea className="flex-1 p-3 md:p-4" ref={scrollAreaRef}>
             <div className="space-y-4">
               {messages.map((msg, idx) => (
                 <div key={idx} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
                   <div className={`flex gap-3 max-w-[85%] ${msg.role === 'user' ? 'flex-row-reverse' : 'flex-row'}`}>
-                    <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${msg.role === 'user' ? 'bg-blue-600 text-white' : 'bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-800'}`}>
+                    <div className={`shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${msg.role === 'user' ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-slate-800 text-blue-600 dark:text-blue-400 border border-slate-200 dark:border-slate-700'}`}>
                       {msg.role === 'user' ? <User className="w-5 h-5" /> : <Bot className="w-5 h-5" />}
                     </div>
-                    <div className={`p-3 rounded-2xl text-sm leading-relaxed shadow-sm ${msg.role === 'user' ? 'bg-blue-600 text-white rounded-tr-none' : 'bg-white dark:bg-slate-700 text-slate-800 dark:text-slate-100 border border-blue-100 dark:border-blue-900/30 rounded-tl-none'}`}>
+                    <div className={`p-3 rounded-2xl text-sm leading-relaxed shadow-sm ${msg.role === 'user' ? 'bg-blue-600 text-white rounded-tr-none' : 'bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 border border-slate-200 dark:border-slate-700 rounded-tl-none'}`}>
                       {msg.content}
                       {isStreaming && idx === messages.length - 1 && msg.role === 'assistant' && !msg.content && (
                         <Loader2 className="w-4 h-4 animate-spin" />
@@ -151,14 +156,14 @@ const ChatSection = () => {
             </div>
           </ScrollArea>
 
-          <div className="p-4 bg-blue-50/30 dark:bg-blue-950/20 border-t border-blue-100 dark:border-blue-900/30 space-y-3">
+          <div className="space-y-3 border-t border-slate-200 bg-slate-50/80 p-3 md:p-4 dark:border-slate-800 dark:bg-slate-900/70">
             <div className="flex flex-wrap gap-2">
               {quickQuestions.map((q, idx) => (
                 <Button
                   key={idx}
                   variant="outline"
                   size="sm"
-                  className="rounded-full text-xs bg-white dark:bg-slate-800 hover:bg-blue-600 hover:text-white transition-colors border-blue-200 dark:border-blue-800"
+                  className="rounded-full border-slate-300 bg-white text-xs font-medium transition-colors hover:bg-blue-600 hover:text-white dark:border-slate-700 dark:bg-slate-900"
                   onClick={() => handleSendMessage(q)}
                   disabled={isStreaming}
                 >
@@ -176,16 +181,16 @@ const ChatSection = () => {
             >
               <Input
                 placeholder="请输入您的问题..."
-                className="bg-white dark:bg-slate-800 rounded-full border-blue-200 dark:border-blue-800 focus-visible:ring-blue-500"
+                className="rounded-full border-slate-300 bg-white dark:border-slate-700 dark:bg-slate-900 focus-visible:ring-blue-500"
                 value={input}
                 onChange={(e) => setInput(e.target.value.substring(0, 200))}
                 maxLength={200}
                 disabled={isStreaming}
               />
-              <Button 
+              <Button
                 type="submit" 
                 size="icon" 
-                className="rounded-full shrink-0 bg-blue-600 hover:bg-blue-700" 
+                className="h-11 w-11 shrink-0 rounded-full bg-blue-600 hover:bg-blue-700 md:h-10 md:w-10" 
                 disabled={!input.trim() || isStreaming}
               >
                 {isStreaming ? (

@@ -32,3 +32,6 @@ history/*.json
 .env
 .env.*
 !.env.example
+
+# Supabase local temp
+supabase/.temp/
