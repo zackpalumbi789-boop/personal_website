@@ -6,7 +6,13 @@
 powershell -ExecutionPolicy Bypass -File .\scripts\push-github.ps1
 ```
 
-作用：清错误代理 → 设置 HTTPS 远程 → `git push`。
+**开着 Clash / VPN 有本机 HTTP 端口时**（终端直连 `github.com` 会超时），加上端口（在软件里看「HTTP 代理 / Mixed」是多少）：
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\push-github.ps1 -ProxyPort 7890
+```
+
+作用：按需设置代理 → 设置 HTTPS 远程 → `git push`。
 
 首次若提示登录，用 **GitHub 账号在弹窗里登录**；若要求输入密码，填 **Personal Access Token**（在 GitHub → Settings → Developer settings → Personal access tokens 创建）。
 
